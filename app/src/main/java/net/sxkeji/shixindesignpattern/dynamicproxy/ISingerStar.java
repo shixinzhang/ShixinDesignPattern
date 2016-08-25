@@ -8,11 +8,13 @@ package net.sxkeji.shixindesignpattern.dynamicproxy;
 public interface ISingerStar {
     /**
      * 唱歌
+     * @param number 歌曲数
      */
-    void sing();
+    void sing(int number);
 
     /**
      * 写专辑
+     * @param number 专辑歌曲数
      */
-    void writeAlbum();
+    void writeAlbum(int number);
 }

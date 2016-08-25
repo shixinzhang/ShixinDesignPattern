@@ -4,7 +4,7 @@ package net.sxkeji.shixindesignpattern.dynamicproxy;
  * 明星，可能是影歌双栖
  * Created by zhangshixin on 8/25/2016.
  */
-public class Star implements IMovieStar {
+public class Star implements IMovieStar{
     private String mName;
 
     public Star(String name) {

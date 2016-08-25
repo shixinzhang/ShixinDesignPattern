@@ -13,7 +13,7 @@ public class AgentTest {
         Star huangBo = new Star("HuangBo");
         Agent agent = new Agent(huangBo);
         // 网上查到，2016年黄渤的片酬达到了 3000W ，我得敲多少年代码额呜呜
-        agent.movieShow(10);
+        agent.movieShow(1000000000);
         agent.tvShow(5);
     }
 

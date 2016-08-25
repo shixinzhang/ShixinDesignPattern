@@ -16,11 +16,19 @@ public class Agent implements IMovieStar {
 
     @Override
     public void movieShow(int money) {
+        if (money < 30000000) {
+            System.out.println(money + "块钱？！你雇 HuangZiTao 演电影去吧！");
+            return;
+        }
         mTarget.movieShow(money);
     }
 
     @Override
     public void tvShow(int money) {
+        if (money < 30000000) {
+            System.out.println(money + "块钱？！你雇 HuangZiTao 演电视剧去吧！");
+            return;
+        }
         mTarget.tvShow(money);
     }
 }

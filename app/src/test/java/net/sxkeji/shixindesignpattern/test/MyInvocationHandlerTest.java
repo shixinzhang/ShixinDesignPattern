@@ -1,8 +1,8 @@
 package net.sxkeji.shixindesignpattern.test;
 
+import net.sxkeji.shixindesignpattern.dynamicproxy.IMovieStar;
 import net.sxkeji.shixindesignpattern.dynamicproxy.MyInvocationHandler;
-import net.sxkeji.shixindesignpattern.staticproxy.IStar;
-import net.sxkeji.shixindesignpattern.staticproxy.Star;
+import net.sxkeji.shixindesignpattern.dynamicproxy.Star;
 
 import org.junit.Test;
 
@@ -11,15 +11,14 @@ import org.junit.Test;
  * Created by zhangshixin on 8/24/2016.
  */
 public class MyInvocationHandlerTest {
-    private MyInvocationHandler mMyInvocationHandler;
 
     @Test
     public void testInvoke() throws Exception {
-        //被代理类
-        IStar star = new Star("songxiaobao");
-        MyInvocationHandler myInvocationHandler = new MyInvocationHandler(star);
-        IStar agent = (IStar) myInvocationHandler.getProxy();
-        agent.attendTheShow();
+        Star huangBo = new Star("HuangBo");
+        MyInvocationHandler myInvocationHandler = new MyInvocationHandler(huangBo);
+        IMovieStar agent = (IMovieStar) myInvocationHandler.getProxy();
+        agent.movieShow(1000000000);
+        agent.tvShow(100);
 
     }
 

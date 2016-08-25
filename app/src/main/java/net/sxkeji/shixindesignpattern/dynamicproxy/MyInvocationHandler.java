@@ -28,12 +28,15 @@ public class MyInvocationHandler implements InvocationHandler {
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-
-        doThePreJob();
-
+        String methodName = method.getName();
+        if (methodName.equals("movieShow") || methodName.equals("tvShow")) {
+            if (args[0] instanceof Integer && ((int) args[0]) < 300000000) {
+                System.out.println(((int) args[0]) + "块钱？！你雇 HuangZiTao 演去吧！");
+                return null;
+            }
+        }
         Object result = method.invoke(mTarget, args);
 
-        doTheAfterJob();
         return result;
     }
 
@@ -50,6 +53,6 @@ public class MyInvocationHandler implements InvocationHandler {
      * @return
      */
     public Object getProxy() {
-        return Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), mTarget.getClass().getInterfaces(), this);
+        return Proxy.newProxyInstance(mTarget.getClass().getClassLoader(), mTarget.getClass().getInterfaces(), this);
     }
 }
