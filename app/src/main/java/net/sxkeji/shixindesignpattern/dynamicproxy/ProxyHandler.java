@@ -9,17 +9,16 @@ import java.lang.reflect.Proxy;
  * Created by zhangshixin on 8/24/2016.
  * Update on ${DATA}
  */
-public class MyInvocationHandler implements InvocationHandler {
+public class ProxyHandler implements InvocationHandler {
     //被代理对象
     private Object mTarget;
 
-    public MyInvocationHandler(Object target) {
-        super();
+    public ProxyHandler(Object target) {
         this.mTarget = target;
     }
 
     /**
-     * 方法拦截，进行一些额外操作
+     * 方法拦截，可以进行一些额外操作
      * @param proxy
      * @param method
      * @param args
@@ -38,14 +37,6 @@ public class MyInvocationHandler implements InvocationHandler {
         Object result = method.invoke(mTarget, args);
 
         return result;
-    }
-
-    private void doTheAfterJob() {
-        System.out.println("doTheAfterJob");
-    }
-
-    private void doThePreJob() {
-        System.out.println("doThePreJob");
     }
 
     /**
