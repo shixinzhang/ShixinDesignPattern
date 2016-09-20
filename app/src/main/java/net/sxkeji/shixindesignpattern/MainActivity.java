@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
                 R.layout.item_text,
                 Arrays.asList("shi", "xin", "zhang")));
 
-
         mListView = (ListView) findViewById(R.id.list_view);
         mListView.setAdapter(new BaseAdapter() {
             @Override
