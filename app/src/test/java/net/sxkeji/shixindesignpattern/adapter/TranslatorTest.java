@@ -17,4 +17,10 @@ public class TranslatorTest {
         Ukrainian ukrainianMan = new Translator(me);
         ukrainianMan.sayUkrainian("我爱你");
     }
+
+    @Test
+    public void testClassAdapterPattern(){
+        Ukrainian ukrainianMan = new ClassTranslator();
+        ukrainianMan.sayUkrainian("刘奶奶找牛奶奶买榴莲牛奶");
+    }
 }

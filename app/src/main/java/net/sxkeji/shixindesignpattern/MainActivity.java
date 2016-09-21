@@ -1,23 +1,23 @@
 package net.sxkeji.shixindesignpattern;
 
 import android.animation.ObjectAnimator;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
+
+import net.sxkeji.shixindesignpattern.adapter.SampleAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ListView mListView;
-    private ArrayList<String> mData;
+    private List<String> mData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,34 +30,27 @@ public class MainActivity extends AppCompatActivity {
                 R.layout.item_text,
                 Arrays.asList("shi", "xin", "zhang")));
 
+        mData.add("shi");
+        mData.add("xin");
+        mData.add("zhang");
+
         mListView = (ListView) findViewById(R.id.list_view);
-        mListView.setAdapter(new BaseAdapter() {
-            @Override
-            public int getCount() {
-                return mData.size();
-            }
-
-            @Override
-            public Object getItem(int position) {
-                return mData.get(position);
-            }
-
-            @Override
-            public long getItemId(int position) {
-                return position;
-            }
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                convertView = LayoutInflater.from(MainActivity.this)
-                        .inflate(R.layout.item_sample, parent);
-                return convertView;
-            }
-        });
+        mListView.setAdapter(new SampleAdapter(this, mData));
 
         ObjectAnimator animator = ObjectAnimator.ofFloat(mListView, View.ALPHA, 0f, 1f);
         animator.setInterpolator(new AccelerateInterpolator());   //加速
         animator.setInterpolator(new OvershootInterpolator());    //跑过头又返回来
 
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        //获取在屏幕的位置
+        int [] xy = new int[2];
+        mListView.getLocationInWindow(xy);
+        System.out.println("tvItem in window location x:" + xy[0] + " / y:"+xy[1]);
+        mListView.getLocationOnScreen(xy);
+        System.out.println("tvItem on screen location x:" + xy[0] + " / y:"+xy[1]);
     }
 }
