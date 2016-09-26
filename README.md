@@ -12,7 +12,7 @@
 
 ###[设计模式六大原则： 辅导班的因材施教 -- 接口隔离原则](http://blog.csdn.net/u011240877/article/details/52213659)
 
-###[Java实现多种单例模式SingletonPattern](http://blog.csdn.net/u011240877/article/details/46988219)
+###[单例模式：茴香豆的几种写法](http://blog.csdn.net/u011240877/article/details/46988219)
 
 ###[代理模式：女朋友这么漂亮，你缺经纪人吗？](http://blog.csdn.net/u011240877/article/details/52264283)
 
