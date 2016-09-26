@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import net.sxkeji.shixindesignpattern.R;
 
@@ -54,8 +54,9 @@ public class SampleAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_sample, null);
         }
-        TextView tvItem = (TextView) convertView.findViewById(R.id.tv_item);
-        tvItem.setText(mData.get(position));
+        EditText tvItem = (EditText) convertView.findViewById(R.id.tv_item);
+        tvItem.setHint(mData.get(position));
+//        tvItem.setText(mData.get(position));
         return convertView;
     }
 }

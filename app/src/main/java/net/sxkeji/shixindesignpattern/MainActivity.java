@@ -35,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
         mData.add("zhang");
 
         mListView = (ListView) findViewById(R.id.list_view);
-        mListView.setAdapter(new SampleAdapter(this, mData));
+        SampleAdapter adapter = new SampleAdapter(this, mData);
+
+        mListView.setAdapter(adapter);
 
         ObjectAnimator animator = ObjectAnimator.ofFloat(mListView, View.ALPHA, 0f, 1f);
         animator.setInterpolator(new AccelerateInterpolator());   //加速
@@ -47,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         //获取在屏幕的位置
-        int [] xy = new int[2];
+        int[] xy = new int[2];
         mListView.getLocationInWindow(xy);
-        System.out.println("tvItem in window location x:" + xy[0] + " / y:"+xy[1]);
+        System.out.println("tvItem in window location x:" + xy[0] + " / y:" + xy[1]);
         mListView.getLocationOnScreen(xy);
-        System.out.println("tvItem on screen location x:" + xy[0] + " / y:"+xy[1]);
+        System.out.println("tvItem on screen location x:" + xy[0] + " / y:" + xy[1]);
     }
 }
