@@ -4,16 +4,16 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * description: 订阅者，实现 Observer 接口，将来需要在 消息发布者那里注册了才能收到消息
+ * description: 斧头帮小弟，订阅者，实现 Observer 接口
  * <br/>
  * author: shixinzhang
  * <br/>
  * data: 9/20/2016
  */
-public class Reader implements Observer {
+public class AxeGangPeople implements Observer {
     String mName;
 
-    public Reader(String name){
+    public AxeGangPeople(String name){
         mName = name;
     }
 
@@ -24,9 +24,9 @@ public class Reader implements Observer {
      */
     @Override
     public void update(Observable observable, Object data) {
-        Writer writer;
-        if (observable instanceof Writer) {
-            writer = (Writer) observable;
+        AxeGangBoss writer;
+        if (observable instanceof AxeGangBoss) {
+            writer = (AxeGangBoss) observable;
             System.out.println(getName() + " 收到来自 " + writer.getName() + " 的消息: " + data.toString());
         }
     }

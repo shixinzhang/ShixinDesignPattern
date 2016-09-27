@@ -3,16 +3,16 @@ package net.sxkeji.shixindesignpattern.observer;
 import java.util.Observable;
 
 /**
- * description: 消息发布者，继承 Observable
+ * description: 斧头帮老大，消息发布者，继承 Observable
  * <br/>
  * author: shixinzhang
  * <br/>
  * data: 9/20/2016
  */
-public class Writer extends Observable {
+public class AxeGangBoss extends Observable {
     private String mName;
 
-    public Writer(String name) {
+    public AxeGangBoss(String name) {
         mName = name;
     }
 
