@@ -1,33 +1,36 @@
 package net.sxkeji.shixindesignpattern.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
+import android.widget.TextView;
 
+import net.sxkeji.shixindesignpattern.DesignPatternBeans;
 import net.sxkeji.shixindesignpattern.R;
 
 import java.util.List;
 
 /**
- * description:
+ * description: 设计模式列表 adapter
  * <br/>
  * author: shixinzhang
  * <br/>
  * data: 9/20/2016
  */
 public class SampleAdapter extends BaseAdapter {
-    private List<String> mData;
+    private List<DesignPatternBeans> mData;
     private Context mContext;
 
-    public SampleAdapter(Context context, List<String> dataList) {
+    public SampleAdapter(Context context, List<DesignPatternBeans> dataList) {
         mContext = context;
         mData = dataList;
     }
 
-    public void addData(String data) {
+    public void addData(DesignPatternBeans data) {
         if (mData != null) {
             mData.add(data);
             notifyDataSetChanged();
@@ -50,13 +53,22 @@ public class SampleAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_sample, null);
         }
-        EditText tvItem = (EditText) convertView.findViewById(R.id.tv_item);
-        tvItem.setHint(mData.get(position));
-//        tvItem.setText(mData.get(position));
+        TextView tvItem = (TextView) convertView.findViewById(R.id.tv_item);
+        tvItem.setText(mData.get(position).getName());
+//        Linkify.addLinks(tvItem, Linkify.ALL);
+        tvItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent view = new Intent();
+                view.setAction(Intent.ACTION_VIEW);
+                view.setData(Uri.parse(mData.get(position).getUrl()));
+                mContext.startActivity(view);
+            }
+        });
         return convertView;
     }
 }
